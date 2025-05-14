@@ -1,0 +1,136 @@
+{% extends 'CanteenLayout.html' %}
+{% load static %}
+{% block mainContent %}
+
+    <div class="page-header parallaxie">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Page Header Box Start -->
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">{{ request.session.canteen.name }}</h1>
+                        <nav class="wow fadeInUp">
+                        </nav>
+                    </div>
+                    <!-- Page Header Box End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Page Team Single Start -->
+    <div class="page-team-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- Team Single Sidebar Start -->
+                    <div class="team-single-sidebar">
+                        <!-- Team Single Image Start -->
+                        <div class="team-single-image">
+                            <figure class="image-anime">
+                                <img src="{% static '/media/' %}{{ canteen.image }}" alt="Canteen Image">
+                            </figure>
+                        </div>
+                        <!-- Team Single Image End -->
+
+                        <!-- Sidebar Cta Box Start -->
+                        <div class="sidebar-cta-box wow fadeInUp">
+                            <!-- Icon Box Start -->
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-sidebar-cta.svg' %}" alt="">
+                            </div>
+                            <!-- Icon Box End -->
+
+                            <!-- CTA Contact Content Start -->
+                            <div class="cta-contact-content">
+                                <h3>You have different questions?</h3>
+                                <p>Our team will answer all your questions. we ensure a quick response.</p>
+                            </div>
+                            <!-- CTA Contact Content End -->
+
+                            <!-- CTA Contact Button Start -->
+                            <div class="cta-contact-btn">
+                                <a href="tel:{{ canteen.number }}" class="btn-default btn-highlighted"><img
+                                        src="{% static 'images/icon-sidebar-cta-phone.svg' %}"
+                                        alt=""> {{ canteen.number }}</a>
+                            </div>
+                            <!-- CTA Contact Button End -->
+                        </div>
+                        <!-- Sidebar Cta Box End -->
+                    </div>
+                    <!-- Team Single Sidebar End -->
+                </div>
+
+                <div class="col-lg-8">
+                    <!-- Team Single Content Start -->
+                    <div class="team-single-content">
+                        <!-- Team Member Information Start -->
+                        <div class="team-member-info">
+                            <!-- Section Title Start -->
+                            <div class="section-title">
+                                <h3 class="wow fadeInUp">Canteen</h3>
+                                <h2 class="text-anime-style-2" data-cursor="-opaque">About <span>US</span></h2>
+                                <p class="wow fadeInUp" data-wow-delay="0.2s"></p>
+                            </div>
+                            <!-- Section Title End -->
+
+                            <!-- Team Info List Start -->
+                            <div class="team-info-list wow fadeInUp" data-wow-delay="0.4s">
+                                <ul>
+                                    <li><h5>Location : {{ canteen.location }}</h5></li>
+                                    <li><h5>Email : {{ canteen.email }}</h5></li>
+                                    <li><h5>Phone : {{ canteen.number }}</h5></li>
+                                </ul>
+                            </div>
+                            <!-- Team Info List End -->
+                        </div>
+                        <div class="row m-3 mb-5">
+                            <div class="col-lg-6 mx-auto">
+                                <div class="card text-center bg-dark wow fadeInUp" style="width: 20rem;">
+                                    <div class="card-body">
+                                        <h2 class="card-text text-white">You may have new <span class="text-warning">Orders !</span>
+                                        </h2>
+                                        <a href="{% url 'pendingOrder' %}" class="btn-default m-3">View New Orders</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mx-auto">
+                                <div class="card text-center bg-dark wow fadeInUp" style="width: 20rem;">
+                                    <div class="card-body">
+                                        <h2 class="card-text text-white">Confusion about old <span class="text-warning">Orders ?</span>
+                                        </h2>
+                                        <a href="{% url 'CanOrders' %}" class="btn-default m-3">View Order History</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row m-3 mb-5">
+                            <div class="col-lg-6 mx-auto">
+                                <div class="card text-center bg-dark wow fadeInUp" style="width: 20rem;">
+                                    <div class="card-body">
+                                        <h2 class="card-text text-white">Something new to add in <span
+                                                class="text-warning">Menu ?</span>
+                                        </h2>
+                                        <a href="{% url 'addItemPage' %}" class="btn-default m-3">Add Food Items</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 mx-auto">
+                                <div class="card text-center bg-dark wow fadeInUp" style="width: 20rem;">
+                                    <div class="card-body">
+                                        <h2 class="card-text text-white">Want to edit present <span
+                                                class="text-warning">Menu ?</span>
+                                        </h2>
+                                        <a href="{% url 'CanOrders' %}" class="btn-default m-3">Edit Menu</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

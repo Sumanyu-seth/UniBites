@@ -1,0 +1,256 @@
+{% extends 'CanteenLayout.html' %}
+{% load static %}
+{% block mainContent %}
+
+    <div class="page-header parallaxie">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Page Header Box Start -->
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">{{ request.session.canteen.name }}</h1>
+                        <nav class="wow fadeInUp">
+                            <H3 class="text-anime-style-2" data-cursor="-opaque">MANAGE FOOD ITEMS</H3>
+                        </nav>
+                    </div>
+                    <!-- Page Header Box End -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container table-responsive wow fadeInUp custom-datatable">
+        <h1 class="text-center my-5 wow fadeInUp">Menu</h1>
+
+        <table class="table table-hover wow fadeInUp display" id="mainTable">
+            <thead class="wow fadeInUp">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>Category ID</th>
+                <th>Image</th>
+                <th>Availability</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody id="MenuTable" class="wow fadeInUp">
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title my-auto text-dark" id="exampleModalLabel">Update Food Item</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="reserve-table justify-content-center d-flex">
+                        <div class="reserve-table-form mb-5">
+                            <form id="updateItemsForm">
+                                {% csrf_token %}
+                                <div class="form-group mb-3">
+                                    <label for="id" class="form-label">Item ID</label>
+                                    <input type="number" class="form-control" id="id" name="id" readonly>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="name" class="form-label">Enter Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required
+                                           maxlength="100">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="description" class="form-label">Enter Description</label>
+                                    <textarea name="description" id="description" class="form-control"></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="price" class="form-label">Enter Price</label>
+                                    <input type="number" class="form-control" id="price" name="price" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="discount" class="form-label">Enter Discount</label>
+                                    <input type="number" class="form-control" id="discount" name="discount" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Select Category</label>
+                                    <select name="category" class="form-control form-select" id="category" required>
+                                        {% for cat in category %}
+                                            <option value="{{ cat.id }}">{{ cat.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image" class="form-label">Item Image</label>
+                                    <input type="file" class="form-control" id="image" name="image">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="mb-3 text-center">
+                                    <div class="reserve-table-btn">
+                                        <input type="submit" value="Submit" class="btn btn-default w-50">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="reserve-table-btn">
+                        <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        const csrfToken = '{{ csrf_token }}';
+
+        $(document).ready(() => {
+            getItems();
+        })
+
+
+        const getItems = () => {
+            fetch('/Items').then(res => res.json()).then(data => {
+                if (data.code === 2) {
+                    createTable(data.data)
+                } else {
+                    alert(data.message)
+                }
+            })
+        }
+
+        const createTable = (data) => {
+            const element = document.getElementById("MenuTable")
+            let s = ""
+            for (let x of data) {
+                s += `<tr>`
+                s += `<td>${x.id}</td>`
+                s += `<td>${x.name}</td>`
+                s += `<td>${x.description}</td>`
+                s += `<td>${x.price}</td>`
+                s += `<td>${x.discount}</td>`
+                s += `<td>${x.category_id}</td>`
+                s += `<td><img src="static/media/${x.image}" alt="{{ x.name }}" width="100"></td>`
+                let availabilityText = x.availability === "1" ? "Available" : "Not Available";
+                let availabilityColor = x.availability === "1" ? "green" : "red";
+                s += `<td>
+    <form method="POST" action="update_availability/${x.id}">
+        <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+        <div class="mb-1">
+            <span class="${x.availability === "1" ? 'text-success' : 'text-danger'} fw-bold">
+                ${x.availability === "1" ? 'Available' : 'Not Available'}
+            </span>
+        </div>
+        <select name="availability" onchange="this.form.submit()" class="form-control form-select">
+            <option class="text-success" value="1" ${x.availability === "1" ? "selected" : ""}>Available</option>
+            <option class="text-danger" value="0" ${x.availability === "0" ? "selected" : ""}>Not Available</option>
+        </select>
+    </form>
+</td>`;
+
+                s += `<td><input onclick="deleteItem('${x.id}')" type="button" value="Delete" class="btn btn-outline-danger m-1">`
+                s += `<input onclick='openUpdateModal(${JSON.stringify(x)})' type="button" value="Update" class="btn btn-outline-primary m-1"></td>`
+                s += `</tr>`
+            }
+            element.innerHTML = s
+            new DataTable('#mainTable');
+        }
+
+        const deleteItem = (id) => {
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+            });
+
+            swalWithBootstrapButtons.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel!",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`deleteItem/${id}`)
+                        .then(res => res.json())
+                        .then(data => {
+                            const {message, code} = data;
+                            swalWithBootstrapButtons.fire({
+                                title: "Deleted!",
+                                text: message,
+                                icon: "success"
+                            });
+                            if (code === 2) {
+                                getItems(); // Refresh the list or UI
+                            }
+                        });
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    swalWithBootstrapButtons.fire({
+                        title: "Cancelled",
+                        text: "Your item is safe :)",
+                        icon: "error"
+                    });
+                }
+            });
+        };
+
+
+        const openUpdateModal = (details) => {
+            console.log(details)
+            document.getElementById("id").value = details.id
+            document.getElementById("name").value = details.name
+            document.getElementById("price").value = details.price
+            document.getElementById("discount").value = details.discount
+            document.getElementById("description").innerText = details.description
+            var galleryModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+                keyboard: false
+            })
+            galleryModal.show()
+        }
+
+        const submitFunction = (e) => {
+            e.preventDefault()
+            const formdata = new FormData(e.target)
+
+            fetch("/updateItem", {method: "POST", body: formdata}).then(res => res.json())
+                .then(data => {
+                    Swal.fire({
+                        title: data.message ,
+                        icon: "success",
+                        draggable: true
+                    });
+                    getItems()
+                })
+        }
+
+        document.getElementById('updateItemsForm').addEventListener('submit', submitFunction)
+        document.addEventListener("DOMContentLoaded", (e) => {
+            getItems()
+        })
+
+    </script>
+
+
+{% endblock %}

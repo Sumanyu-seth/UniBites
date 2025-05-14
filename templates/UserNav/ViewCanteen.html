@@ -1,0 +1,81 @@
+{% extends 'LAYOUT.html' %}
+{% load static %}
+{% block mainContent %}
+
+    <div class="page-header parallaxie">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">UNIVERSITY CANTEENS</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Page Blog Section Start -->
+    <div class="page-blog">
+        <div class="container">
+            <div class="row" id="canteenCard">
+                <div class="col-lg-12">
+                    <!-- Page Pagination Start -->
+                    <div class="page-pagination wow fadeInUp" data-wow-delay="1.2s">
+                    </div>
+                    <!-- Page Pagination End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Blog Section End -->
+
+    <script>
+
+        const viewCards = () => {
+            fetch('/Canteens').then(res => res.json()).then(data => {
+                if (data.code === 2) {
+                    createCard(data.data)
+                } else {
+                    alert(data.message)
+                }
+            })
+        }
+
+        const createCard = (data) => {
+            const element = document.getElementById("canteenCard")
+            let s = " "
+            for (let x of data) {
+
+                s += ` <div class="col-lg-4 col-md-6">
+                    <div class="post-item wow fadeInUp">
+                        <div class="post-featured-image">
+                            <a href="/openMenu/${x.id}" data-cursor-text="View">
+                                <figure class="image-anime">
+                                    <img src="static/media/${x.image}" alt="">
+                                </figure>
+                            </a>
+                        </div>
+                        <div class="blog-item-body">
+                            <div class="post-item-content">
+                                <h2><a class="text-warning" href="/openMenu/${x.id}">${x.name}</a>
+                                </h2><br>
+                            <h3>${x.location}</h3>
+                            </div>
+                            <div class="blog-item-btn">
+                                <a href="/openMenu/${x.id}" class="readmore-btn">Open Menu</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Post Item End -->
+                </div>`
+            }
+            element.innerHTML = s
+        }
+
+
+        document.addEventListener("DOMContentLoaded", (e) => {
+            viewCards()
+        })
+    </script>
+{% endblock %}

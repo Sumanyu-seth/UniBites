@@ -1,0 +1,83 @@
+{% extends 'LAYOUT.html' %}
+{% load static %}
+{% block mainContent %}
+
+    <div class="page-header parallaxie">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">Edit Your Profile</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="reserve-table justify-content-center d-flex">
+        <div class="col-lg-6 ">
+            <div class="reserve-table-form ">
+
+                <form id="editProfileForm" class="wow fadeInUp">
+                    {% csrf_token %}
+                    <div class="form-group mb-3">
+                        <label class="form-label">User ID</label>
+                        <input type="number" class="form-control" name="id" id="id" readonly
+                               value="{{ request.session.user.id }}">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">User Name</label>
+                        <input type="text" class="form-control" name="name" id="name"
+                               value="{{ request.session.user.name }}">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" id="email"
+                               value="{{ request.session.user.email }}">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Number</label>
+                        <input type="number" class="form-control" name="number" id="number"
+                               value="{{ request.session.user.number }}">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="reserve-table-btn">
+                            <button type="submit" class="btn-default">Update</button>
+                            <div id="msgSubmit" class="h3 hidden"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const updateProfile = (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            fetch("/updateProfile", {
+                method: 'POST',
+                body: formData,
+            }).then(response => response.json())
+                .then(data => {
+                   swal.fire({
+                       title: data.message,
+                       icon: 'success',
+                   }).then(()=>{
+                    if (data.code === 2) {
+                        document.getElementById('editProfileForm').reset();
+                        location.reload();
+                    }})
+                })
+        };
+
+        document.getElementById('editProfileForm').addEventListener('submit', updateProfile);
+    </script>
+
+{% endblock %}

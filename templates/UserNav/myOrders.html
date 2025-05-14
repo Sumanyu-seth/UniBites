@@ -1,0 +1,119 @@
+{% extends 'LAYOUT.html' %}
+{% load static %}
+{% block mainContent %}
+
+    <div class="page-header parallaxie">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">Order History</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if details %}
+        <div class="page-menu">
+            <div class="container">
+                <div class="row section-row">
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h2 class="text-anime-style-2" data-cursor="-opaque">your Order <span>ID's</span></h2>
+                        </div>
+                        <!-- Section Title End -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="special-menu-list">
+                            {% for order in details %}
+                                <div class="special-menu-item wow fadeInUp">
+                                    <div class="special-menu-item-content">
+                                        <button class="circle btn-info"
+                                                style="border-radius: 50%; padding: 30px; background-color:#f7ac3c; font-size: 1.5em; border: none">
+                                            <a class="text-white" href="#{{ order.order.id }}">#{{ order.order.id }}</a>
+                                        </button>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mx-3">
+            {% for detail in details %}
+                <div class="col-12 col-lg-4 wow fadeInUp">
+                    <div class="card bg-dark-subtle shadow-md m-4 wow fadeInUp" id="{{ detail.order.id }}">
+                        <div class="card-body wow fadeInUp">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h2 class="card-title h5">Order #{{ detail.order.id }}</h2>
+                                <h2 class="card-title h5">{{ detail.order.canteen.name }}</h2>
+                            </div>
+                            <p class="card-subtitle text-muted mb-2">{{ detail.order.date }}</p>
+                            {% for item in detail.details %}
+                                <div class="mb-3 space-y-2">
+                                    <div class="d-flex align-items-center">
+                                        <img src="static/media/{{ item.food.image }}" alt="food img"
+                                             class="rounded-circle me-2"
+                                             style="width: 40px; height: 40px;">
+                                        <h3 class="card-text h6">{{ item.food.name }}</h3>
+                                    </div>
+                                    <p class="card-text">
+                                        ₹{{ item.food.price }} x {{ item.quantity }}
+                                    </p>
+                                </div>
+                            {% endfor %}
+                            <div class="mt-auto d-flex justify-content-between align-items-end">
+                            </div>
+                            <p class="card-text fw-semibold">{{ detail.details|length }} items</p>
+                            {% if detail.order.status == "0" %}
+                                <span data-order-status class="badge bg-warning text-dark">Status: Pending</span>
+                            {% elif detail.order.status == "1" %}
+                                <span data-order-status class="badge bg-success">Status: Accepted</span>
+                            {% elif detail.order.status == "2" %}
+                                <span data-order-status class="badge bg-danger">Status: Rejected</span>
+                            {% endif %}
+
+                            <p class="card-text h5 text-end fw-bold">₹{{ detail.order.total_price }}</p>
+                            <p class="card-text h5 text-end fw-bold">{{ detail.order.mode }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="card border-0 shadow-sm rounded-3">
+                        <div class="card-body text-center py-5">
+                            <div class="mb-4">
+                                <div class="bg-light d-inline-block p-3 rounded-circle"
+                                     style="width: 150px; height: 150px;">
+                                    <img src="{% static 'images/no_order.svg' %}" alt="no orders">
+                                </div>
+                            </div>
+
+                            <h3 class="h4 mb-3 text-dark">No orders yet!</h3>
+                            <p class="text-muted mb-4">Looks like you haven't placed any orders with us yet.</p>
+
+                            <a href="{% url 'ViewCanteen' %}" class="btn btn-default mb-3">
+                                Start Ordering
+                            </a>
+                            <br>
+                            <a href="{% url 'myOrders' %}" class="btn btn-link text-muted">
+                                Refresh or Check Again
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,524 @@
+{% extends 'LAYOUT.html' %}
+{% load static %}
+{% block mainContent %}
+
+    <div class="page-header parallaxie">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">Mess Schedule</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Page Menu Start -->
+    <div class="page-menu">
+        <div class="container">
+            <div class="row section-row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">taste the best that surprise you</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">our everyday <span>menu</span></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="special-menu-list">
+                        <div class="special-menu-item wow fadeInUp">
+                            <div class="special-menu-img">
+                                <a href="#monday" data-cursor-text="View">
+                                    <figure class="image-anime">
+                                        <img src="{% static 'images/Monday.jpg' %}" alt="">
+                                    </figure>
+                                </a>
+                            </div>
+                            <div class="special-menu-item-content">
+                                <h3><a href="#monday">monday</a></h3>
+                            </div>
+                        </div>
+
+                        <!-- Special Menu Item Start -->
+                        <div class="special-menu-item wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="special-menu-img">
+                                <a href="#tuesday" data-cursor-text="View">
+                                    <figure class="image-anime">
+                                        <img src="{% static 'images/tuesday.jpg' %}" alt="">
+                                    </figure>
+                                </a>
+                            </div>
+                            <div class="special-menu-item-content">
+                                <h3><a href="#tuesday">tuesday</a></h3>
+                            </div>
+                        </div>
+                        <!-- Special Menu Item End -->
+
+                        <!-- Special Menu Item Start -->
+                        <div class="special-menu-item wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="special-menu-img">
+                                <a href="#wednesday" data-cursor-text="View">
+                                    <figure class="image-anime">
+                                        <img src="{% static 'images/wednes.jpg' %}" alt="">
+                                    </figure>
+                                </a>
+                            </div>
+                            <div class="special-menu-item-content">
+                                <h3><a href="#wednesday">wednesday</a></h3>
+                            </div>
+                        </div>
+                        <!-- Special Menu Item End -->
+
+                        <!-- Special Menu Item Start -->
+                        <div class="special-menu-item wow fadeInUp" data-wow-delay="0.6s">
+                            <div class="special-menu-img">
+                                <a href="#thursday" data-cursor-text="View">
+                                    <figure class="image-anime">
+                                        <img src="{% static 'images/thursday.png' %}" alt="">
+                                    </figure>
+                                </a>
+                            </div>
+                            <div class="special-menu-item-content">
+                                <h3><a href="#thursday">thursday</a></h3>
+                            </div>
+                        </div>
+                        <!-- Special Menu Item End -->
+
+                        <!-- Special Menu Item Start -->
+                        <div class="special-menu-item wow fadeInUp" data-wow-delay="0.8s">
+                            <div class="special-menu-img">
+                                <a href="#friday" data-cursor-text="View">
+                                    <figure class="image-anime">
+                                        <img src="{% static 'images/friday.jpg' %}" alt="">
+                                    </figure>
+                                </a>
+                            </div>
+                            <div class="special-menu-item-content">
+                                <h3><a href="#friday">friday</a></h3>
+                            </div>
+                        </div>
+                        <!-- Special Menu Item End -->
+
+                        <!-- Special Menu Item Start -->
+                        <div class="special-menu-item wow fadeInUp" data-wow-delay="1s">
+                            <div class="special-menu-img">
+                                <a href="#saturday" data-cursor-text="View">
+                                    <figure class="image-anime">
+                                        <img src="{% static 'images/saturday.jpg' %}" alt="">
+                                    </figure>
+                                </a>
+                            </div>
+                            <div class="special-menu-item-content">
+                                <h3><a href="#saturday">saturday</a></h3>
+                            </div>
+                        </div>
+                        <!-- Special Menu Item End -->
+                    </div>
+                    <!-- Special Menu List End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Menu End -->
+
+    <!-- Our Food Menu Start -->
+    <div class="our-food-menu">
+        <div class="food-menu-item" id="monday">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="food-menu-sidebar">
+                            <div class="section-title">
+                                <h3 class="wow fadeInUp">time and menu</h3>
+                                <h2 class="text-anime-style-2" data-cursor="-opaque">Monday</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Breakfast</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 7:30am - 10:00am</p>
+                                        <h5 class="text-center">Parantha + Dalia + Boiled eggs + Tea/Milk</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Lunch</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 1:30 pm to 3:30 pm</p>
+                                        <h5 class="text-center">black chane curry + rice + roti + yoghurt</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Dinner</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 7:30 pm to 10:00 pm</p>
+                                        <h5 class="text-center">Kali dal + roti + rice + sweetdish </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Food Menu Item End -->
+
+        <!-- Food Menu Item Start -->
+        <div class="food-menu-item" id="tuesday">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="food-menu-sidebar">
+                            <div class="section-title">
+                                <h3 class="wow fadeInUp">time and menu</h3>
+                                <h2 class="text-anime-style-2" data-cursor="-opaque">Tuesday</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Breakfast</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 7:30am - 10:00am</p>
+                                        <h5 class="text-center">Parantha + Dalia + Boiled eggs + Tea/Milk</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Lunch</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 1:30 pm to 3:30 pm</p>
+                                        <h5 class="text-center">Rajma + rice + roti + yoghurt</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Dinner</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 7:30 pm to 10:00 pm</p>
+                                        <h5 class="text-center">Chana Daal + roti + rice + sweetdish </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Food Menu Item End -->
+
+            <!-- Food Menu Item Start -->
+        <div class="food-menu-item" id="wednesday">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="food-menu-sidebar">
+                            <div class="section-title">
+                                <h3 class="wow fadeInUp">time and menu</h3>
+                                <h2 class="text-anime-style-2" data-cursor="-opaque">wednesday</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Breakfast</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 7:30am - 10:00am</p>
+                                        <h5 class="text-center">Parantha + Dalia + Boiled eggs + Tea/Milk</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Lunch</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 1:30 pm to 3:30 pm</p>
+                                        <h5 class="text-center">White chane + rice + roti + yoghurt</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Dinner</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 7:30 pm to 10:00 pm</p>
+                                        <h5 class="text-center">Saambar + idli + rice + sweetdish </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Food Menu Item End -->
+
+            <!-- Food Menu Item Start -->
+        <div class="food-menu-item" id="thursday">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="food-menu-sidebar">
+                            <div class="section-title">
+                                <h3 class="wow fadeInUp">time and menu</h3>
+                                <h2 class="text-anime-style-2" data-cursor="-opaque">Thursday</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Breakfast</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 7:30am - 10:00am</p>
+                                        <h5 class="text-center">Parantha + Dalia + Boiled eggs + Tea/Milk</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Lunch</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 1:30 pm to 3:30 pm</p>
+                                        <h5 class="text-center">Daal Makhani + rice + roti + yoghurt</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Dinner</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 7:30 pm to 10:00 pm</p>
+                                        <h5 class="text-center">Rongi daal + roti + rice + sweetdish </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Food Menu Item End -->
+
+            <!-- Food Menu Item Start -->
+        <div class="food-menu-item" id="friday">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="food-menu-sidebar">
+                            <div class="section-title">
+                                <h3 class="wow fadeInUp">time and menu</h3>
+                                <h2 class="text-anime-style-2" data-cursor="-opaque">friday</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Breakfast</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 7:30am - 10:00am</p>
+                                        <h5 class="text-center">Parantha + Dalia + Boiled eggs + Tea/Milk</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Lunch</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 1:30 pm to 3:30 pm</p>
+                                        <h5 class="text-center">Yellow curry + rice + roti + yoghurt</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Dinner</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 7:30 pm to 10:00 pm</p>
+                                        <h5 class="text-center">Matar Paneer + roti + rice + sweetdish </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Food Menu Item End -->
+
+            <!-- Food Menu Item Start -->
+        <div class="food-menu-item" id="saturday">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="food-menu-sidebar">
+                            <div class="section-title">
+                                <h3 class="wow fadeInUp">time and menu</h3>
+                                <h2 class="text-anime-style-2" data-cursor="-opaque">saturday</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Breakfast</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 7:30am - 10:00am</p>
+                                        <h5 class="text-center">Parantha + Dalia + Boiled eggs + Tea/Milk</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Lunch</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 1:30 pm to 3:30 pm</p>
+                                        <h5 class="text-center">Rajma + rice + roti + yoghurt</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="our-menu-list d-flex flex-column align-items-center">
+                            <div class="our-menu-item wow fadeInUp w-100" style="max-width: 80%; margin-bottom: 70px;">
+                                <div class="menu-item-body">
+                                    <div class="menu-item-title">
+                                        <h3>Dinner</h3>
+                                        <hr>
+                                        <span>₹ 40</span>
+                                    </div>
+                                    <div class="menu-item-content">
+                                        <p>Timings:- 7:30 pm to 10:00 pm</p>
+                                        <h5 class="text-center">Manchurian + roti + rice + sweetdish </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Food Menu Item End -->
+
+
+    </div>
+    <!-- Our Food Menu End -->
+
+
+{% endblock %}

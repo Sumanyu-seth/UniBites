@@ -1,0 +1,103 @@
+{% extends 'CanteenLayout.html' %}
+{% load static %}
+{% block mainContent %}
+
+    <div class="page-header parallaxie">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">{{ request.session.canteen.name }}</h1>
+                        <nav class="wow fadeInUp">
+                            <H3 class="text-anime-style-2" data-cursor="-opaque">Change Password</H3>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reserve-table justify-content-center d-flex">
+        <div class="col-lg-6">
+            <div class="reserve-table-form">
+
+                <form id="canteenChPwForm" class="wow fadeInUp">
+                    {% csrf_token %}
+
+                    <div class="form-group col-md-12 mb-4">
+                        <label for="id" class="form-label">Canteen ID</label>
+                        <input type="number" value="{{ request.session.canteen.id }}" readonly name="id" id="id"
+                               class="form-control">
+                        <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">User Name</label>
+                        <input type="text" value="{{ request.session.canteen.name }}" readonly name="name" id="name"
+                               class="form-control">
+                        <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="oldPw" class="form-label">Old Password</label>
+                        <input type="password" required name="oldPw" id="oldPw" class="form-control">
+                        <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="newPw" class="form-label">New Password</label>
+                        <input type="password" name="newPw" id="newPw" class="form-control" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="confirmPw" class="form-label">Confirm Password</label>
+                        <input type="password" name="confirmPw" id="confirmPw" class="form-control">
+                        <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="reserve-table-btn">
+                            <button type="submit" class="btn-default">Change</button>
+                            <div id="msgSubmit" class="h3 hidden"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const changePw = (e) => {
+            e.preventDefault()
+            let newPw = document.getElementById('newPw').value
+            let confirmPw = document.getElementById('confirmPw').value
+            let formData = new FormData(e.target)
+            if (newPw === confirmPw) {
+                fetch("/changeCanPW", {method: 'POST', body: formData}).then(resp => resp.json())
+                    .then(data => {
+                       swal.fire({
+                           title: data.message,
+                            icon: "warning",
+                       })
+                        if (data.code === 2) {
+                             swal.fire({
+                            title: data.message,
+                            icon: 'success',
+                        })
+                            document.getElementById('canteenChPwForm').reset()
+                        }
+                    })
+            } else {
+               swal.fire({
+                   text: "New Password and Confirm Password must be same.",
+                    icon: "warning",
+               })
+            }
+
+
+        }
+        document.getElementById('canteenChPwForm').addEventListener('submit', changePw)</script>
+
+
+{% endblock %}

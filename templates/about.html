@@ -1,0 +1,537 @@
+{% extends 'LAYOUT.html' %}
+{% load static %}
+{% block mainContent %}
+
+    <div class="page-header parallaxie">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Page Header Box Start -->
+                    <div class="page-header-box">
+                        <H1 class="text-anime-style-2" data-cursor="-opaque">about us</H1><br>
+                    </div>
+                    <!-- Page Header Box End -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-us">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-1 order-2">
+                    <!-- About Us Image Start -->
+                    <div class="about-us-image">
+                        <!-- About Us Img Start -->
+                        <div class="about-us-img">
+                            <figure class="image-anime">
+                                <img src="{% static 'images/about-us-image.jpg' %}" alt="">
+                            </figure>
+                        </div>
+                        <!-- About Us Img End -->
+
+                        <!-- Company Experience Box Start -->
+                        <div class="company-experience">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-company-experience.svg' %}" alt="">
+                            </div>
+
+                            <div class="company-experience-content">
+                                <h3><span class="counter">1</span>st of its kind on campus</h3>
+                            </div>
+                        </div>
+                        <!-- Company Experience Box End -->
+
+                        <!-- About Author Image Start -->
+                        <div class="about-author-img">
+                            <figure class="image-anime">
+                                <img src="{% static 'images/UnibitesLogo.jpeg' %}" alt="">
+                            </figure>
+                        </div>
+                        <!-- About Author Image End -->
+                    </div>
+                    <!-- About Us Image End -->
+                </div>
+
+                <div class="col-lg-6 order-lg-2 order-1">
+                    <!-- About Us Content Start -->
+                    <div class="about-us-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">about us</h3>
+                            <h2 class="text-anime-style-2" data-cursor="-opaque">Your Gateway to Campus
+                                <span>flavors</span>
+                            </h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">UniBites is a web-based platform designed to
+                                help students browse, locate, and order food from various canteens across the
+                                university. Whether you're in a lecture or heading out, check what's available and skip
+                                the wait.</p>
+                        </div>
+                        <!-- Section Title End -->
+
+                        <!-- About Content List Start -->
+                        <div class="about-content-list wow fadeInUp" data-wow-delay="0.4s">
+                            <ul>
+                                <li>live food availability across all campus canteens</li>
+                                <li>easy ordering with real-time updates</li>
+                                <li>student-friendly, accessible & fast</li>
+                            </ul>
+                        </div>
+                        <!-- About Content List End -->
+
+                        <!-- About Content Buttons Start -->
+                        <div class="about-content-btn wow fadeInUp" data-wow-delay="0.6s">
+                            <a href="{% url 'ViewCanteen' %}" class="btn-default">order now</a>
+                        </div>
+                        <!-- About Content Buttons End -->
+                    </div>
+                    <!-- About Us Content End -->
+                </div>
+
+                <div class="col-lg-12 order-3">
+                    <!-- About Detail Box Start -->
+                    <div class="about-detail-box">
+                        <!-- About Detail Item Start -->
+                        <div class="about-detail-item wow fadeInUp">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-about-detail-1.svg' %}" alt="">
+                            </div>
+                            <div class="about-detail-content">
+                                <h3>smart campus dining</h3>
+                                <p>UniBites brings convenience to your fingertips with a unified platform for campus
+                                    food access.</p>
+                            </div>
+                        </div>
+                        <!-- About Detail Item End -->
+
+                        <!-- About Detail Item Start -->
+                        <div class="about-detail-item wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-about-detail-2.svg' %}" alt="">
+                            </div>
+                            <div class="about-detail-content">
+                                <h3>instant updates</h3>
+                                <p>Know what's available and when, so you never waste time walking around or waiting in
+                                    line.</p>
+                            </div>
+                        </div>
+                        <!-- About Detail Item End -->
+
+                        <!-- About Detail Item Start -->
+                        <div class="about-detail-item wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-about-detail-3.svg' %}" alt="">
+                            </div>
+                            <div class="about-detail-content">
+                                <h3>made for students</h3>
+                                <p>Created by students, for students — UniBites understands your needs and simplifies
+                                    your campus life.</p>
+                            </div>
+                        </div>
+                        <!-- About Detail Item End -->
+                    </div>
+                    <!-- About Detail Box End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Us Section End -->
+
+    <!-- Our Approach Section Start -->
+    <div class="our-approach">
+        <div class="container">
+            <div class="row section-row">
+                <div class="col-lg-12">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">our approach</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">Reimagining campus munchies with
+                            <span>technology</span>
+                        </h2>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Our Approch Tab Start -->
+                    <div class="our-approch-tab">
+                        <!-- Sidebar Our Approch Nav start -->
+                        <div class="our-approch-tab-nav wow fadeInUp" data-wow-delay="0.2s">
+                            <ul class="nav nav-tabs" id="approchTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="mission-tab" data-bs-toggle="tab"
+                                            data-bs-target="#mission" type="button" role="tab" aria-selected="true">our
+                                        mission
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="vision-tab" data-bs-toggle="tab"
+                                            data-bs-target="#vision" type="button" role="tab" aria-selected="false">our
+                                        vision
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="value-tab" data-bs-toggle="tab" data-bs-target="#value"
+                                            type="button" role="tab" aria-selected="false">our value
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Sidebar Our Approch Nav End -->
+
+                        <!-- Approch Box Start -->
+                        <div class="approch-box tab-content" id="approchTabContent">
+                            <!-- Approch Item Start -->
+                            <div class="approch-item tab-pane fade show active" id="mission" role="tabpanel">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6">
+                                        <!-- Approch Tab Content Start -->
+                                        <div class="approch-tab-content">
+                                            <!-- Section Title Start -->
+                                            <div class="section-title">
+                                                <h3 class="wow fadeInUp">our mission</h3>
+                                                <h2 class="text-anime-style-2" data-cursor="-opaque">Empowering students
+                                                    through smart food access</h2>
+                                                <p class="wow fadeInUp" data-wow-delay="0.2s">
+                                                    UniBites is on a mission to revolutionize how students discover,
+                                                    track, and enjoy food on campus. We aim to eliminate long queues and
+                                                    uncertainty by providing real-time canteen menus, availability, and
+                                                    order tracking — all at your fingertips.
+                                                </p>
+                                            </div>
+                                            <!-- Section Title End -->
+
+                                            <!-- Approch Tab Content List Start -->
+                                            <div class="approch-tab-content-list wow fadeInUp" data-wow-delay="0.4s">
+                                                <ul>
+                                                    <li>Streamlining food access with real-time updates and digital
+                                                        ordering.
+                                                    </li>
+                                                    <li>Reducing food waste through better inventory awareness.</li>
+                                                    <li>Enhancing student life with speed, simplicity, and
+                                                        transparency.
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!-- Approch Tab Content List End -->
+                                        </div>
+                                        <!-- Approch Tab Content End -->
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Approch Tab Image Start -->
+                                        <div class="approch-tab-image">
+                                            <figure class="image-anime">
+                                                <img src="{% static 'images/our-mission-img.jpg' %}" alt="">
+                                            </figure>
+                                        </div>
+                                        <!-- Approch Tab Image End -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Approch Item End -->
+
+                            <!-- Approch Item Start -->
+                            <div class="approch-item tab-pane fade" id="vision" role="tabpanel">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6">
+                                        <!-- Approch Tab Content Start -->
+                                        <div class="approch-tab-content">
+                                            <!-- Section Title Start -->
+                                            <div class="section-title">
+                                                <h3>our vision</h3>
+                                                <h2 data-cursor="-opaque">Making every campus meal easy, informed, and
+                                                    accessible</h2>
+                                                <p>
+                                                    We envision a connected campus ecosystem where students make smarter
+                                                    food choices effortlessly. UniBites aspires to be the go-to food
+                                                    companion for universities — bridging the gap between technology and
+                                                    nutrition with a frictionless, student-friendly interface.
+                                                </p>
+                                            </div>
+                                            <!-- Section Title End -->
+
+                                            <!-- Approch Tab Content List Start -->
+                                            <div class="approch-tab-content-list">
+                                                <ul>
+                                                    <li>Become the leading digital food discovery platform for
+                                                        universities.
+                                                    </li>
+                                                    <li>Promote healthier and informed eating habits among students.
+                                                    </li>
+                                                    <li>Drive digital transformation in university food
+                                                        infrastructure.
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!-- Approch Tab Content List End -->
+                                        </div>
+                                        <!-- Approch Tab Content End -->
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Approch Tab Image Start -->
+                                        <div class="approch-tab-image">
+                                            <figure class="image-anime">
+                                                <img src="{% static 'images/our-vision-img.jpg' %}" alt="">
+                                            </figure>
+                                        </div>
+                                        <!-- Approch Tab Image End -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Approch Item End -->
+
+                            <!-- Approch Item Start -->
+                            <div class="approch-item tab-pane fade" id="value" role="tabpanel">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-6">
+                                        <!-- Approch Tab Content Start -->
+                                        <div class="approch-tab-content">
+                                            <!-- Section Title Start -->
+                                            <div class="section-title">
+                                                <h3>our value</h3>
+                                                <h2 data-cursor="-opaque">Built for students, driven by innovation</h2>
+                                                <p>
+                                                    Our values guide every line of code and every interaction. UniBites
+                                                    stands for student-centricity, transparency, efficiency, and
+                                                    tech-driven problem solving. We believe food on campus shouldn't be
+                                                    a guessing game — it should be smart, fast, and accessible.
+                                                </p>
+                                            </div>
+                                            <!-- Section Title End -->
+
+                                            <!-- Approch Tab Content List Start -->
+                                            <div class="approch-tab-content-list">
+                                                <ul>
+                                                    <li>Student-first in design, service, and purpose.</li>
+                                                    <li>Technology as a tool for simplification, not complication.</li>
+                                                    <li>Honest data, clear availability, no surprises.</li>
+                                                </ul>
+                                            </div>
+                                            <!-- Approch Tab Content List End -->
+                                        </div>
+                                        <!-- Approch Tab Content End -->
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!-- Approch Tab Image Start -->
+                                        <div class="approch-tab-image">
+                                            <figure class="image-anime">
+                                                <img src="{% static 'images/our-value-img.jpg' %}" alt="">
+                                            </figure>
+                                        </div>
+                                        <!-- Approch Tab Image End -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Approch Item End -->
+                        </div>
+                        <!-- Approch Box End -->
+                    </div>
+                    <!-- Our Approch Tab End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Approach Section End -->
+
+    <!-- Daily Offer Section Start -->
+    <div class="daily-offer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!-- Daily Offer Image Start -->
+                    <div class="daily-offer-image">
+                        <div class="daily-offer-img">
+                            <figure>
+                                <img src="{% static 'images/daily-offer-image.png' %}" alt="">
+                            </figure>
+                        </div>
+
+                        <!-- Delicious Burger Box Start -->
+                        <div class="delicious-burger-box">
+                            <div class="delicious-burger-title">
+                                <h3>Delicious Burger</h3>
+                            </div>
+                            <div class="delicious-burger-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="delicious-burger-list">
+                                <ul>
+                                    <li>tomato sauces</li>
+                                    <li>vegitables</li>
+                                    <li>lettuce</li>
+                                    <li>cheese slice</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Delicious Burger Box End -->
+                    </div>
+                    <!-- Daily Offer Image End -->
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Daily Offer Content Start -->
+                    <div class="daily-offer-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">how unibites helps you</h3>
+                            <h2 class="text-anime-style-2" data-cursor="-opaque">Making your campus dining <span>smarter & smoother</span>
+                            </h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">
+                                UniBites simplifies your daily food experience by showing real-time availability across
+                                all campus canteens, letting you browse menus, check item status, and order in advance —
+                                saving your time, avoiding queues, and ensuring you never miss your favorite meal.
+                            </p>
+
+                        </div>
+                        <!-- Section Title End -->
+
+                        <!-- Daily Offer List Start -->
+                        <div class="daily-offer-list wow fadeInUp" data-wow-delay="0.4s">
+                            <ul>
+                                <li>Live menu updates across all faculty canteens</li>
+                                <li>Easy ordering with just a few clicks</li>
+                                <li>Time-saving and hassle-free food access</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Faqs Section Start -->
+    <div class="our-faqs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- Our Faqs Content Start -->
+                    <div class="our-faqs-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">frequently asked questions</h3>
+                            <h2 class="text-anime-style-2" data-cursor="-opaque">questions about
+                                <span>canteen services?</span></h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">Get answers to the most common questions about
+                                food availability, ordering process, payment options, and more. Still confused? Feel
+                                free to reach out!</p>
+                        </div>
+                        <!-- Section Title End -->
+
+                        <!-- Faqs Content Button Start -->
+                        <div class="faqs-content-btn wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="section-title">
+                                <h3 class="wow fadeInUp">Have some other questions?</h3>
+                            </div>
+                            <a href="{% url 'contactUs' %}" class="btn-default">Contact Us</a>
+                        </div>
+                        <!-- Faqs Content Button End -->
+                    </div>
+                    <!-- Our Faqs Content End -->
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- FAQ Accordion Start -->
+                    <div class="faq-accordion" id="accordion">
+                        <!-- FAQ Item 1 -->
+                        <div class="accordion-item wow fadeInUp">
+                            <h2 class="accordion-header" id="heading1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                    1. How can I check if a specific dish is available in the canteen right now?
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1"
+                                 data-bs-parent="#accordion">
+                                <div class="accordion-body">
+                                    <p>You can view real-time availability of food items through our UniBites web app.
+                                        Simply log in, select your faculty canteen, and check what's currently being
+                                        served.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 2 -->
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s">
+                            <h2 class="accordion-header" id="heading2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    2. Can I pre-order food to avoid long queues?
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2"
+                                 data-bs-parent="#accordion">
+                                <div class="accordion-body">
+                                    <p>Yes! With UniBites, you can pre-order your food and receive a notification when
+                                        it’s ready for pickup. This helps reduce wait times during busy lunch hours.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 3 -->
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.4s">
+                            <h2 class="accordion-header" id="heading3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                    3. What payment methods are accepted at the canteen?
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3"
+                                 data-bs-parent="#accordion">
+                                <div class="accordion-body">
+                                    <p>We accept UPI, credit/debit cards, and cash. Online orders via UniBites can also
+                                        be paid through secure digital gateways such as Google Pay, PhonePe, or
+                                        Paytm.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 4 -->
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.6s">
+                            <h2 class="accordion-header" id="heading4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                    4. Are there any healthy or diet-specific meal options?
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4"
+                                 data-bs-parent="#accordion">
+                                <div class="accordion-body">
+                                    <p>Yes, most canteens offer vegetarian, low-calorie, and protein-rich meals. You can
+                                        filter menu items in the UniBites app based on your dietary preference.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 5 -->
+                        <div class="accordion-item wow fadeInUp" data-wow-delay="0.8s">
+                            <h2 class="accordion-header" id="heading5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                    5. What should I do if my order is delayed or incorrect?
+                                </button>
+                            </h2>
+                            <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5"
+                                 data-bs-parent="#accordion">
+                                <div class="accordion-body">
+                                    <p>If there’s an issue with your order, you can contact the canteen support directly
+                                        through the UniBites app. Our team is available during working hours to resolve
+                                        any concerns promptly.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FAQ Accordion End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Faqs Section End -->
+
+
+{% endblock %}

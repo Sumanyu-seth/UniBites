@@ -1,0 +1,71 @@
+body{
+    margin: 0;
+    padding:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Jost', "cursive";
+    background: #0E110D;
+    background: linear-gradient(to bottom, #000000, #613b01, #9f5803);
+}
+
+.login-wrp{
+   max-width: 400px;
+   width: 100%;
+   margin: 100px auto;
+}
+.top{
+   background: #512a01;
+   height: 280px;
+   position: relative
+}
+.logo{
+   position: absolute;
+   max-width: 100px;
+   top: 20%;
+   left: 50%;
+   transform: translateX(-50%);
+   -webkit-transform: translateX(-50%);
+}
+.bottom{
+   background: #f68c42;
+   height: 280px;
+   position:relative;
+}
+.bottom .login-form{
+   background: #4e2508;
+   position: absolute;
+   box-shadow: 1px 1px 10px #999;
+   width: 90%;
+   top:-38%;
+   left: 5%;
+   border-radius: 5px;
+   padding: 50px 40px;
+}
+.btn{
+   border-radius: 30px
+}
+.btn-primary{
+   background: #ef953a;
+   border-color: #ef953a;
+}
+.btn-primary:hover,.btn-primary:focus{
+   background: #ef953a;
+   border-color: #ef953a
+}
+.checkbox-inline{
+   cursor: pointer;
+}
+
+.password-container {
+    position: relative;
+}
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+}

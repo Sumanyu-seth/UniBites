@@ -1,0 +1,301 @@
+{% extends 'LAYOUT.html' %}
+{% load static %}
+
+{% block mainContent %}
+    {% if 'user' in request.session %}
+        <div class="page-header parallaxie">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Page Header Box Start -->
+                        <div class="page-header-box">
+                            <H2 class="text-anime-style-2" data-cursor="-opaque">
+                                HEY, {{ request.session.user.name }}<br>
+                                How Are You Doing ?</H2></div>
+                        <!-- Page Header Box End -->
+                    </div>
+                </div>
+                <div class="container m-4">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <form method="get" action="{% url 'searched_menu' %}">
+                                {% csrf_token %}
+                                <div class="input-group mb-3">
+                                    <select class="form-select" name="category" style="max-width: 150px;">
+                                        <option value="" selected>All Categories</option>
+                                        {% for category in categories %}
+                                            <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <input type="text" class="form-control" name="q"
+                                           placeholder="Search for food items...">
+                                    <button class="btn btn-warning" type="submit">Search</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="page-header parallaxie">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Page Header Box Start -->
+                        <div class="page-header-box">
+                            <H1 class="text-anime-style-2" data-cursor="-opaque">Welcome to</H1><br>
+                            <h1 class="text-anime-style-2" style="font-family: cursive; color: #f7ac3c"
+                                data-cursor="-opaque">UniBites</h1>
+                        </div>
+                        <!-- Page Header Box End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <!-- About Us Section Start -->
+    <div class="about-us">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-1 order-2">
+                    <!-- About Us Image Start -->
+                    <div class="about-us-image">
+                        <!-- About Us Img Start -->
+                        <div class="about-us-img">
+                            <figure class="image-anime">
+                                <img src="{% static 'images/about-us-image.jpg' %}" alt="">
+                            </figure>
+                        </div>
+                        <!-- About Us Img End -->
+
+                        <!-- Company Experience Box Start -->
+                        <div class="company-experience">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-company-experience.svg' %}" alt="">
+                            </div>
+
+                            <div class="company-experience-content">
+                                <h3><span class="counter">1</span>st of its kind on campus</h3>
+                            </div>
+                        </div>
+                        <!-- Company Experience Box End -->
+
+                        <!-- About Author Image Start -->
+                        <div class="about-author-img">
+                            <figure class="image-anime">
+                                <img src="{% static 'images/UnibitesLogo.jpeg' %}" alt="">
+                            </figure>
+                        </div>
+                        <!-- About Author Image End -->
+                    </div>
+                    <!-- About Us Image End -->
+                </div>
+
+                <div class="col-lg-6 order-lg-2 order-1">
+                    <!-- About Us Content Start -->
+                    <div class="about-us-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">about us</h3>
+                            <h2 class="text-anime-style-2" data-cursor="-opaque">Your Gateway to Campus
+                                <span>flavors</span>
+                            </h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">UniBites is a web-based platform designed to
+                                help students browse, locate, and order food from various canteens across the
+                                university. Whether you're in a lecture or heading out, check what's available and skip
+                                the wait.</p>
+                        </div>
+                        <!-- Section Title End -->
+
+                        <!-- About Content List Start -->
+                        <div class="about-content-list wow fadeInUp" data-wow-delay="0.4s">
+                            <ul>
+                                <li>live food availability across all campus canteens</li>
+                                <li>easy ordering with real-time updates</li>
+                                <li>student-friendly, accessible & fast</li>
+                            </ul>
+                        </div>
+                        <!-- About Content List End -->
+
+                        <!-- About Content Buttons Start -->
+                        <div class="about-content-btn wow fadeInUp" data-wow-delay="0.6s">
+                            <a href="{% url 'ViewCanteen' %}" class="btn-default">order now</a>
+                        </div>
+                        <!-- About Content Buttons End -->
+                    </div>
+                    <!-- About Us Content End -->
+                </div>
+
+                <div class="col-lg-12 order-3">
+                    <!-- About Detail Box Start -->
+                    <div class="about-detail-box">
+                        <!-- About Detail Item Start -->
+                        <div class="about-detail-item wow fadeInUp">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-about-detail-1.svg' %}" alt="">
+                            </div>
+                            <div class="about-detail-content">
+                                <h3>smart campus dining</h3>
+                                <p>UniBites brings convenience to your fingertips with a unified platform for campus
+                                    food access.</p>
+                            </div>
+                        </div>
+                        <!-- About Detail Item End -->
+
+                        <!-- About Detail Item Start -->
+                        <div class="about-detail-item wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-about-detail-2.svg' %}" alt="">
+                            </div>
+                            <div class="about-detail-content">
+                                <h3>instant updates</h3>
+                                <p>Know what's available and when, so you never waste time walking around or waiting in
+                                    line.</p>
+                            </div>
+                        </div>
+                        <!-- About Detail Item End -->
+
+                        <!-- About Detail Item Start -->
+                        <div class="about-detail-item wow fadeInUp" data-wow-delay="0.4s">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-about-detail-3.svg' %}" alt="">
+                            </div>
+                            <div class="about-detail-content">
+                                <h3>made for students</h3>
+                                <p>Created by students, for students — UniBites understands your needs and simplifies
+                                    your campus life.</p>
+                            </div>
+                        </div>
+                        <!-- About Detail Item End -->
+                    </div>
+                    <!-- About Detail Box End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Us Section End -->
+
+    <div class="our-dishes">
+        <div class="container">
+            <div class="row section-row">
+                <div class="col-lg-12">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">our main canteens</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">Browse & order from your <span>favourite campus spots</span>
+                        </h2>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+            </div>
+
+            <div class="row">
+                {% for canteen in canteens %}
+                    <div class="col-lg-3 col-md-6">
+                        <!-- Our Dish Item Start -->
+                        <div class="our-dish-item wow fadeInUp">
+                            <div class="our-dish-img">
+                                <a href="openMenu/{{ canteen.id }}">
+                                    <figure class="image-anime">
+                                        <img src="{% static 'media/' %}{{ canteen.image }}" alt="">
+                                    </figure>
+                                </a>
+                            </div>
+                            <div class="our-dish-content">
+                                <a href="openMenu/{{ canteen.id }}"><h3>{{ canteen.name }}</h3></a>
+                                <p>{{ canteen.location }}</p>
+                            </div>
+                        </div>
+                        <!-- Our Dish Item End -->
+                    </div>
+                {% endfor %}
+                <div class="col-lg-12">
+                    <!-- Section Footer Text Start -->
+                    <div class="section-footer-text wow fadeInUp" data-wow-delay="0.8s">
+                        <p>Hungry for Something Delicious? <a href="{% url 'ViewCanteen' %}">View All Canteens!</a></p>
+                    </div>
+                    <!-- Section Footer Text End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Dishes Section End -->
+
+    <!-- Daily Offer Section Start -->
+    <div class="daily-offer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <!-- Daily Offer Image Start -->
+                    <div class="daily-offer-image">
+                        <div class="daily-offer-img">
+                            <figure>
+                                <img src="{% static 'images/daily-offer-image.png' %}" alt="">
+                            </figure>
+                        </div>
+
+                        <!-- Delicious Burger Box Start -->
+                        <div class="delicious-burger-box">
+                            <div class="delicious-burger-title">
+                                <h3>Delicious Burger</h3>
+                            </div>
+                            <div class="delicious-burger-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div class="delicious-burger-list">
+                                <ul>
+                                    <li>tomato sauces</li>
+                                    <li>vegitables</li>
+                                    <li>lettuce</li>
+                                    <li>cheese slice</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Delicious Burger Box End -->
+                    </div>
+                    <!-- Daily Offer Image End -->
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Daily Offer Content Start -->
+                    <div class="daily-offer-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">how unibites helps you</h3>
+                            <h2 class="text-anime-style-2" data-cursor="-opaque">Making your campus dining <span>smarter & smoother</span>
+                            </h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">
+                                UniBites simplifies your daily food experience by showing real-time availability across
+                                all campus canteens, letting you browse menus, check item status, and order in advance —
+                                saving your time, avoiding queues, and ensuring you never miss your favorite meal.
+                            </p>
+
+                        </div>
+                        <!-- Section Title End -->
+
+                        <!-- Daily Offer List Start -->
+                        <div class="daily-offer-list wow fadeInUp" data-wow-delay="0.4s">
+                            <ul>
+                                <li>Live menu updates across all faculty canteens</li>
+                                <li>Easy ordering with just a few clicks</li>
+                                <li>Time-saving and hassle-free food access</li>
+                            </ul>
+
+                        </div>
+                        <!-- Daily Offer List End -->
+
+                    </div>
+                    <!-- Daily Offer Content End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Daily Offer Section End -->
+    <script>
+    </script>
+{% endblock %}

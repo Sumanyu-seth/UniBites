@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<!-- Mirrored from html.awaikenthemes.com/spicyhunt/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Apr 2025 06:52:58 GMT -->
+<head>
+    {% load static %}
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Awaiken">
+    <!-- Page Title -->
+    <title>UniBites</title>
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+    <!-- Google Fonts Css-->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap"
+          rel="stylesheet">
+    <!-- Bootstrap Css -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
+    <!-- SlickNav Css -->
+    <link href="{% static 'css/slicknav.min.css' %}" rel="stylesheet">
+    <!-- Swiper Css -->
+    <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}">
+    <!-- Font Awesome Icon Css-->
+    <link href="{% static 'css/all.min.css' %}" rel="stylesheet" media="screen">
+    <!-- Animated Css -->
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+    <!-- Magnific Popup Core Css File -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <!-- Mouse Cursor Css File -->
+    <link rel="stylesheet" href="{% static 'css/mousecursor.css' %}">
+    <!-- Main Custom Css -->
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet" media="screen">
+
+</head>
+<body>
+
+<!-- Preloader Start -->
+<div class="preloader">
+    <div class="loading-container">
+        <div class="loading"></div>
+        <div id="loading-icon"><img src="{% static 'images/loader.svg' %}" alt=""></div>
+    </div>
+</div>
+<!-- Preloader End -->
+
+<!-- Header Start -->
+<header class="main-header">
+    <div class="header-sticky">
+
+        {% if request.session.user %}
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <!-- Logo Start -->
+                    <a class="navbar-brand" href="{% url 'index' %}">
+                        <img src="{% static 'images/logo.svg' %}" alt="Logo">
+                    </a>
+                    <!-- Logo End -->
+
+                    <!-- Main Menu Start -->
+                    <div class="collapse navbar-collapse main-menu">
+                        <div class="nav-menu-wrapper">
+                            <ul class="navbar-nav mr-auto" id="menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'index' %}">
+                                        <img src="{% static 'images/house-door-fill.svg' %}" alt="Home"
+                                             style="width: 32px; height: 32px;">
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'ViewCanteen' %}">Canteens</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'mess' %}">Mess</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'myOrders' %}">My Orders</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'AddToCartPage' %}">View Cart </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'about' %}">About Us </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <img src="{% static 'images/person-circle.svg' %}" alt=""
+                                             style="width: 32px; height: 32px;">
+                                    </a>
+                                    <ul>
+                                        <li class="nav-item"><a class="nav-link" href="{% url 'changePassPage' %}">Change
+                                            Password</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{% url 'editProfilePage' %}">Edit
+                                            Profile</a></li>
+                                        <li class="nav-item"><a href="{% url 'logoutUser' %}" class="nav-link">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <!-- Header Contact Box Start -->
+                        <div class="header-btn">
+                            <a href="{% url 'logoutUser' %}" class="btn-default">LOGOUT</a>
+                        </div>
+                        <!-- Header Contact Box End -->
+                    </div>
+                    <!-- Main Menu End -->
+                    <div class="navbar-toggle"></div>
+                </div>
+            </nav>
+            <div class="responsive-menu"></div>
+
+        {% else %}
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <!-- Logo Start -->
+                    <a class="navbar-brand" href="{% url 'index' %}">
+                        <img src="{% static 'images/logo.svg' %}" alt="Logo">
+                    </a>
+                    <!-- Logo End -->
+
+                    <!-- Main Menu Start -->
+                    <div class="collapse navbar-collapse main-menu">
+                        <div class="nav-menu-wrapper">
+                            <ul class="navbar-nav mr-auto" id="menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'index' %}">
+                                    <img src="{% static 'images/house-door-fill.svg' %}" alt="Home"
+                                             style="width: 32px; height: 32px;">
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'ViewCanteen' %}">Canteens</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'contactUs' %}">Contact Us</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <img src="{% static 'images/person-circle.svg' %}" alt=""
+                                             style="width: 32px; height: 32px;">
+                                    </a>
+                                    <ul>
+                                        <li class="nav-item"><a class="nav-link" href="{% url 'loginPage' %}">Login/Signup</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{% url 'CanteenPage' %}">Canteen Login</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Header Contact Box Start -->
+                        <div class="header-btn">
+                            <a href="{% url 'loginPage' %}" class="btn-default mx-2">LOGIN/SIGNUP</a>
+                        </div>
+                        <div class="header-btn">
+                            <a href="{% url 'CanteenPage' %}" class="btn-default">Canteen Login</a>
+                        </div>
+                        <!-- Header Contact Box End -->
+                    </div>
+                    <!-- Main Menu End -->
+                    <div class="navbar-toggle"></div>
+                </div>
+            </nav>
+
+
+            <div class="responsive-menu"></div>
+
+        {% endif %}
+
+    </div>
+</header>
+<!-- Header End -->
+
+{% block mainContent %}
+{% endblock %}
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <!-- Footer Content Start -->
+                <div class="footer-content">
+                    <!-- Footer Logo Start -->
+                    <div class="footer-logo">
+                        <img src="{% static 'images/logo.svg' %}" alt="" class="mt-3">
+                    </div>
+                    <!-- Footer Logo End -->
+
+                    <!-- Footer Contact Box Start -->
+                    <div class="footer-contact-box">
+                        <!-- Footer Contact Item Start -->
+                        <div class="footer-contact-item">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-location.svg' %}" alt="">
+                            </div>
+                            <div class="footer-contact-content">
+                                <p>Guru Nanak Dev University, Amritsar.</p>
+                            </div>
+                        </div>
+                        <!-- Footer Contact Item End -->
+
+                        <!-- Footer Contact Item Start -->
+                        <div class="footer-contact-item">
+                            <div class="icon-box">
+                                <img src="{% static 'images/icon-phone.svg' %}" alt="">
+                            </div>
+                            <div class="footer-contact-content">
+                                <p><a href="tel:0788596">+91 75****1126</a></p>
+                            </div>
+                        </div>
+                        <!-- Footer Contact Item End -->
+                    </div>
+                    <!-- Footer Contact Box End -->
+                </div>
+                <!-- Footer Content End -->
+            </div>
+        </div>
+
+        <!-- Footer Copyright Section Start -->
+        <div class="footer-copyright">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <!-- Footer Social Icon Start -->
+                    <div class="footer-social-icon">
+                        <ul>
+                            <li><a href="tel:2453215"><i class="fa-brands fa-whatsapp"></i></a></li>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- Footer Social Icon End -->
+                </div>
+
+                <div class="col-lg-6 col-md-6">
+                    <!-- Footer Copyright Start -->
+                    <div class="footer-copyright-text">
+                        <p>Copyright © 2025 All Rights Reserved.</p>
+                        <p>Copyright © Sumanyu Seth.</p>
+                    </div>
+                    <!-- Footer Copyright End -->
+                </div>
+            </div>
+        </div>
+        <!-- Footer Copyright Section End -->
+    </div>
+</footer>
+<!-- Main Footer Section End -->
+
+<!-- Jquery Library File -->
+<script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+<!-- Bootstrap js file -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<!-- Validator js file -->
+<script src="{% static 'js/validator.min.js' %}"></script>
+<!-- SlickNav js file -->
+<script src="{% static 'js/jquery.slicknav.js' %}"></script>
+<!-- Swiper js file -->
+<script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+<!-- Counter js file -->
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<!-- Magnific js file -->
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<!-- SmoothScroll -->
+<script src="{% static 'js/SmoothScroll.js' %}"></script>
+<!-- Parallax js -->
+<script src="{% static 'js/parallaxie.js' %}"></script>
+<!-- MagicCursor js file -->
+<script src="{% static 'js/gsap.min.js' %}"></script>
+<script src="{% static 'js/magiccursor.js' %}"></script>
+<!-- Text Effect js file -->
+<script src="{% static 'js/SplitText.js' %}"></script>
+<script src="{% static 'js/ScrollTrigger.min.js' %}"></script>
+<!-- YTPlayer js File -->
+<script src="{% static 'js/jquery.mb.YTPlayer.min.js' %}"></script>
+<!-- Wow js file -->
+<script src="{% static 'js/wow.min.js' %}"></script>
+<!-- Main Custom js file -->
+<script src="{% static 'js/function.js' %}"></script>
+</body>
+
+<!-- Mirrored from html.awaikenthemes.com/spicyhunt/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 10 Apr 2025 06:52:58 GMT -->
+</html>

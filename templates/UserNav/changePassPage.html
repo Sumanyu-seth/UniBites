@@ -1,0 +1,94 @@
+{% extends 'LAYOUT.html' %}
+{% load static %}
+{% block mainContent %}
+
+    <div class="page-header parallaxie">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Page Header Box Start -->
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">Change Password</h1>
+                    </div>
+                    <!-- Page Header Box End -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reserve-table justify-content-center d-flex">
+        <div class="col-lg-6 ">
+            <div class="reserve-table-form ">
+                <form id="changePassForm" class="wow fadeInUp">
+                    {% csrf_token %}
+
+                    <div class="form-group col-md-12 mb-4">
+                        <label for="id" class="form-label">User ID</label>
+                        <input type="text" value="{{ request.session.user.id }}" readonly name="id" id="id"
+                               class="form-control">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">User Name</label>
+                        <input type="text" value="{{ request.session.user.name }}" readonly name="name" id="name"
+                               class="form-control">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="oldPass" class="form-label">Old Password</label>
+                        <input type="password" required name="oldPass" id="oldPass" class="form-control">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="newPass" class="form-label">New Password</label>
+                        <input type="password" name="newPass" id="newPass" class="form-control" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPass" class="form-label">Confirm Password</label>
+                        <input type="password" name="confirmPass" id="confirmPass" class="form-control">
+                        <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="reserve-table-btn">
+                            <button type="submit" class="btn-default">Change</button>
+                            <div id="msgSubmit" class="h3 hidden"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const changePassword = (e) => {
+            e.preventDefault()
+            let newPass = document.getElementById('newPass').value
+            let confirmPass = document.getElementById('confirmPass').value
+            let formData = new FormData(e.target)
+            if (newPass === confirmPass) {
+                fetch("/changePass", {method: 'POST', body: formData}).then(resp => resp.json())
+                    .then(data => {
+                        Swal.fire({
+                        title: data.message,
+                        icon: "success"
+                    });
+                        if (data.code === 2) {
+                            document.getElementById('changePassForm').reset()
+                        }
+                    })
+            } else {
+                swal.fire({
+                    title: "New Password and Confirm Password must be same.",
+                    icon: "error",
+                })
+            }
+
+
+        }
+        document.getElementById('changePassForm').addEventListener('submit', changePassword)
+    </script>
+
+
+{% endblock %}

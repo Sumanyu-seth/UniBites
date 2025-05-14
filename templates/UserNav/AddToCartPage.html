@@ -1,0 +1,433 @@
+{% extends 'LAYOUT.html' %}
+{% load static %}
+
+{% block mainContent %}
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <style>
+        .container {
+            padding: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item:last-child {
+            border-bottom: 1px solid #eee;
+            margin-bottom: 0;
+        }
+
+        .special-menu-img {
+            margin: 0 auto 10px;
+            width: 80%;
+        }
+
+        .special-menu-img figure {
+            margin: 0;
+        }
+
+        .special-menu-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .cart-item-info {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-info h4 {
+            margin: 0 0 5px;
+            font-size: 1.2em;
+        }
+
+        .quantity {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .quantity button {
+            background: #f7ac3c;
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .quantity-value {
+            font-size: 1.1em;
+        }
+
+        .price {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .price h3 {
+            font-size: 1.5em;
+            margin-left: 10px;
+        }
+
+        .remove-btn-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .remove-btn {
+            color: white;
+            border: none;
+            font-size: 13px;
+        }
+
+        .total-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .total-section h2 {
+            font-size: 1.8em;
+        }
+
+        .total-section button {
+            font-size: 1.1em;
+        }
+
+        @media (min-width: 768px) {
+            .cart-item {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .special-menu-img {
+                margin: 0 15px 0 0;
+                width: 150px;
+            }
+
+            .cart-item-info {
+                text-align: left;
+                margin-bottom: 0;
+                flex-grow: 1;
+            }
+
+            .quantity {
+                margin-bottom: 0;
+            }
+
+            .price {
+                text-align: right;
+                margin-left: auto;
+                margin-bottom: 0;
+            }
+
+            .remove-btn-wrapper {
+                width: auto;
+                margin-top: 0;
+                justify-content: flex-end;
+                margin-left: 15px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .remove-btn-wrapper {
+                margin-top: 110px;
+                justify-content: flex-start;
+            }
+        }
+
+        .py-5 {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .col-md-8, .col-lg-6 {
+            width: 100%;
+        }
+
+        .mb-4 {
+            margin-bottom: 20px;
+        }
+
+        .bg-light {
+            background-color: #f8f9fa !important;
+        }
+
+        .rounded-circle {
+            border-radius: 50% !important;
+        }
+
+        .bi-cart {
+            font-size: 2em;
+        }
+
+        .h4 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .text-muted {
+            color: #6c757d !important;
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+
+        .mt-3 {
+            margin-top: 15px !important;
+        }
+
+    </style>
+
+    <div class="page-header parallaxie">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">Welcome To Cart</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        {% if cart %}
+            {% for item in cart %}
+                <div class="cart-item" data-price="{{ item.price }}" data-category="{{ item.food_item.category }}">
+                    <div class="special-menu-img">
+                        <figure class="image-anime">
+                            <img src="{% static 'media/' %}{{ item.food_item.image }}" alt="Food Image">
+                        </figure>
+                    </div>
+                    <div class="cart-item-info">
+                        <h4>{{ item.food_item.name }}</h4>
+                        <p>Canteen: {{ item.canteen.name }}</p>
+                    </div>
+                    <div class="quantity" data-food-id="{{ item.food_item.id }}"
+                         data-url="{% url 'UpdateCartQuantity' %}">
+                        <button type="button" onclick="updateQuantity(this, 'decrease')">-</button>
+                        <span class="quantity-value">{{ item.quantity }}</span>
+                        <button type="button" onclick="updateQuantity(this, 'increase')">+</button>
+                    </div>
+
+
+                    <div class="price" data-food-id="{{ item.food_item.id }}" data-price="{{ item.food_item.price }}">
+                        <h3 class="item-total-price">₹{{ item.total_price }}</h3>
+                    </div>
+
+                    <form action="{% url 'RemoveFromCart' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="food_id" value="{{ item.food_item.id }}">
+                        <div class="remove-btn-wrapper">
+                            <button type="submit" class="btn-default remove-btn">Remove</button>
+                        </div>
+                    </form>
+                </div>
+            {% endfor %}
+
+
+            <div class="total-section">
+                <h2>Total: <span>₹</span><span id="cart-total-price">{{ total_price }}</span></h2>
+                <p id="approx-waiting-time" style="font-weight: bold; margin-top: 10px;"></p>
+                <button onclick="placeOrder('Online')" class="btn-default mt-3">Pay Online</button>
+                <button onclick="placeOrder('Cash')" class="btn-default mt-3">Pay with Cash</button>
+                <form id="placeOrderForm" style="display: none;">
+                    {% csrf_token %}
+                    <input type="hidden" name="payment_mode" value="">
+                </form>
+                <input type="hidden" id="email" name="email" value="{{ request.session.user.email }}">
+                <input type="hidden" id="mobile" name="mobile" value="{{ request.session.user.number }}">
+            </div>
+
+        {% else %}
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="card border-0 shadow-sm rounded-3">
+                            <div class="card-body text-center py-5">
+                                <div class="mb-4">
+                                    <div class="bg-light d-inline-block p-3 rounded-circle">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                             fill="currentColor" class="bi bi-cart text-secondary" viewBox="0 0 16 16">
+                                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <h3 class="h4 mb-3 text-dark">Your cart is empty</h3>
+                                <p class="text-muted mb-4">Looks like you haven't added anything to your cart yet.</p>
+
+                                <a href="{% url 'ViewCanteen' %}" class="btn btn-default mb-3">
+                                    Go to Canteens
+                                </a><br>
+                                <a href="{% url 'myOrders' %}" class="btn btn-default">
+                                    View Your Orders
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        function calculateApproxWaitingTime() {
+            const cartItems = document.querySelectorAll('.cart-item');
+            let totalItems = 0;
+            let drinksCount = 0;
+            let pizzaCount = 0;
+
+            cartItems.forEach(item => {
+                const category = item.dataset.category;
+                const quantity = parseInt(item.querySelector('.quantity-value').textContent.trim());
+
+                if (!category || quantity === 0) return;
+
+                totalItems += quantity;
+
+                if (category === 'Drinks') {
+                    drinksCount += quantity;
+                } else if (category === 'Pizza') {
+                    pizzaCount += quantity;
+                }
+            });
+
+            // Base initial time between 6–12 minutes
+            let totalTime = randomBetween(8, 15);
+
+            // Add time for general items (excluding Drinks and Pizza)
+            let generalItemCount = totalItems - drinksCount - pizzaCount;
+            totalTime += generalItemCount * randomBetween(1, 3);
+
+            // Special case: Drinks (add 2–4 mins per 2 drinks)
+            totalTime += Math.floor(drinksCount / 2) * randomBetween(2, 4);
+
+            // Special case: Pizza (add 3–5 mins per pizza)
+            totalTime += pizzaCount * randomBetween(3, 5);
+
+            document.getElementById('approx-waiting-time').textContent =
+                `Estimated Waiting Time: ${totalTime} minutes`;
+        }
+
+        // Utility to get a random integer between min and max (inclusive)
+        function randomBetween(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+
+        function updateQuantity(button, action) {
+            const container = button.closest('.quantity');
+            const foodId = container.dataset.foodId;
+            const url = container.dataset.url;
+
+            fetch(`${url}?food_id=${foodId}&action=${action}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const quantitySpan = container.querySelector('.quantity-value');
+                        quantitySpan.textContent = data.quantity;
+
+                        const priceContainer = document.querySelector(`.price[data-food-id='${foodId}']`);
+                        if (priceContainer) {
+                            const priceTag = priceContainer.querySelector('.item-total-price');
+                            priceTag.textContent = "₹" + data.item_total_price.toFixed(1);
+                        }
+
+                        const cartTotal = document.getElementById("cart-total-price");
+                        if (cartTotal) {
+                            cartTotal.textContent = data.cart_total_price.toFixed(1);
+                        }
+
+                        if (data.quantity > 1) {
+                            calculateApproxWaitingTime();
+                        }
+                    }
+                });
+        }
+
+
+        function placeOrder(paymentMode) {
+            const form = document.getElementById('placeOrderForm');
+            const formData = new FormData(form);
+            formData.set('payment_mode', paymentMode);
+            let cost = document.getElementById('cart-total-price').innerHTML;
+            let email = document.getElementById('email').value;
+            let mobile = document.getElementById('mobile').value;
+            if (paymentMode === 'Cash') {
+                checkout(formData)
+            } else if (paymentMode === 'Online') {
+
+                payment(cost, email, mobile, formData);
+            }
+
+
+        }
+
+        function payment(cost, mobile, email, formData) {
+            var amount = cost * 100;
+            console.log(amount)
+
+            var options = {
+                "key": "rzp_test_dRWiKHS7zr2Gki",
+                "amount": amount,
+                "name": "Demo",
+                "description": "",
+                "currency": "INR",
+                "image": "",
+                prefill: {
+                    email: email,
+                    contact: mobile
+                },
+                "handler": function (response) {
+                    if (response.razorpay_payment_id === "") {
+                        alert('Failed');
+                    } else {
+                        checkout(formData)
+                    }
+                },
+                "notes": {
+                    "address": ""
+                },
+                "theme": {
+                    "color": "#050505"
+                },
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        }
+
+
+        const checkout = (formData) => {
+            fetch("/place_order", {method: "POST", body: formData}).then(res => res.json())
+                .then(data => {
+                    Swal.fire({
+                        icon: 'success',
+                        title: data.message,
+                        text: "Pickup your order after estimated waiting time. Thankyou"
+                    }).then(() => {
+                        location.reload();
+                    });
+                })
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            calculateApproxWaitingTime();
+        });
+
+    </script>
+
+{% endblock %}

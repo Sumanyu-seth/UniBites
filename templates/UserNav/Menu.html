@@ -1,0 +1,326 @@
+{% extends 'LAYOUT.html' %}
+{% load static %}
+{% block mainContent %}
+
+    <div class="page-header parallaxie">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Page Header Box Start -->
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">Our Menu</h1>
+                    </div>
+                    <!-- Page Header Box End -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Menu Start -->
+    <div class="page-menu">
+        <div class="container">
+            <div class="row section-row">
+                <div class="col-lg-12">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">taste the best that surprise you</h3>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Special Menu List Start -->
+                    <div class="special-menu-list">
+                        {% for category in categories %}
+                            <!-- Special Menu Item Start -->
+                            <div class="special-menu-item wow fadeInUp">
+                                <div class="special-menu-img">
+                                    <a href="#{{ category.name }}" data-cursor-text="View">
+                                        <figure class="image-anime">
+                                            <img src="/static/media/{{ category.image }}" alt="">
+                                        </figure>
+                                    </a>
+                                </div>
+                                <div class="special-menu-item-content">
+                                    <h3><a href="#{{ category.name }}">{{ category.name }}</a></h3>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <!-- Special Menu Item End -->
+                    </div>
+                    <!-- Special Menu List End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Menu End -->
+
+    <!-- Our Food Menu Start -->
+    <div class="our-food-menu">
+        <div class="our-food-menu">
+            {% for category in categories %}
+                <div class="food-menu-item" id="{{ category.name }}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <!-- Sidebar -->
+                                <div class="food-menu-sidebar">
+                                    <div class="section-title">
+                                        <h3 class="wow fadeInUp">menu & pricing</h3>
+                                        <h2 class="text-anime-style-2" data-cursor="-opaque">{{ category.name }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-9">
+                                <div class="our-menu-list">
+                                    {% for item in fooditem %}
+                                        {% if item.category_id == category.id %}
+                                            <div class="our-menu-item wow fadeInUp">
+                                                <div class="our-menu-image">
+                                                    <figure>
+                                                        <img src="/static/media/{{ item.image }}" alt="">
+                                                    </figure>
+                                                </div>
+                                                <div class="menu-item-body">
+                                                    <div class="menu-item-title">
+                                                        <h3>{{ item.name }}</h3>
+                                                        <hr>
+                                                        <span>₹{{ item.price }}</span>
+                                                    </div>
+                                                    <div class="menu-item-content">
+                                                        <p>{{ item.description }}</p>
+                                                    </div>
+                                                    <div class="btn">
+                                                        {% if 'user' in request.session %}
+                                                            <form class="add-to-cart-form" data-food-id="{{ item.id }}">
+                                                                {% csrf_token %}
+                                                                <button type="button"
+                                                                        class="btn-default mx-5 my-1 add-to-cart-btn">
+                                                                    Add To
+                                                                    Cart
+                                                                </button>
+                                                            </form>
+                                                        {% else %}
+                                                            <a href="{% url 'loginPage' %}" type="button"
+                                                               class="btn-default mx-5 my-1 add-to-cart-btn">Add To
+                                                                Cart
+                                                            </a>
+                                                        {% endif %}
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <!-- Our Testimonial Section Start -->
+    <div class="our-testimonial parallaxie">
+        <div class="container">
+            <div class="row section-row">
+                <div class="col-lg-12">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">our reviews</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">real reviews of canteen <span>food items and experiences</span>
+                        </h2>
+                    </div>
+                    <!-- Section Title End -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Testimonial Slider Start -->
+                    <div class="testimonial-slider">
+                        <div class="swiper">
+                            <div class="swiper-wrapper" data-cursor-text="Drag">
+                                {% for review in reviews %}
+                                <!-- Testimonial Slide Start -->
+                                <div class="swiper-slide">
+                                    <div class="testimonial-item">
+                                        <div class="testimonial-quote">
+                                            <img src="{% static 'images/testimonial-quote.svg' %}" alt="">
+                                        </div>
+                                        <div class="testimonial-content">
+                                            <p>{{ review.review }}</p>
+                                        </div>
+                                        <div class="author-info">
+                                            <div class="author-content">
+                                                <h3>{{ review.name }}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                <!-- Testimonial Slide End -->
+                            </div>
+                            <div class="testimonial-btn">
+                                <div class="testimonial-btn-prev"></div>
+                                <div class="testimonial-btn-next"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial Slider End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Testimonial Section End -->
+
+
+
+    <!-- Reserve Table Section Start -->
+    <div class="reserve-table">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- Reserve table Content Start -->
+                    <div class="reserve-table-content">
+                        <!-- Section Title Start -->
+                        <div class="section-title">
+                            <h3 class="wow fadeInUp">review the canteen</h3>
+                            <h2 class="text-anime-style-2" data-cursor="-opaque">
+                                give your review and <span>share your food experience.</span>
+                            </h2>
+                        </div>
+                        <!-- Section Title End -->
+
+                        <!-- Reserve Table Body Start -->
+                        <div class="reserve-table-body">
+                            <h3>Have Any Questions ?</h3>
+                            <a href="{% url 'contactUs' %}" class="btn-default">Contact Us</a>
+                        </div>
+                        <!-- Reserve Table Body End -->
+                    </div>
+                    <!-- Reserve table Content End -->
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="reserve-table-form">
+
+                        <form id="reviewForm" data-toggle="validator" class="wow fadeInUp">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="form-group col-md-12 mb-4">
+                                    <label class="form-label">your name</label>
+                                    <input type="text" name="name" class="form-control" id="name"
+                                           value="{{ request.session.user.name }}" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <label class="form-label">email address</label>
+                                    <input type="email" name="email" class="form-control" id="email"
+                                           value="{{ request.session.user.email }}" required>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-6 mb-4">
+                                    <label class="form-label">canteen id</label>
+                                    <input type="text" name="canteenId" class="form-control" id="canteenId"
+                                           value="{{ id }}">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="form-group col-md-12 mb-5">
+                                    <label class="form-label">Review</label>
+                                    <textarea name="review" class="form-control" id="review" rows="4"
+                                              placeholder="Write Message.."></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn-default w-100">Submit Review</button>
+                                    <div id="MsgSubmit" class="h3 hidden"></div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- Contact Form End -->
+                    </div>
+                    <!-- Reserve Table Form End -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Reserve Table Section End -->
+
+
+    <script>
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const form = this.closest('.add-to-cart-form');
+                const foodId = form.getAttribute('data-food-id');
+                const csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
+
+                fetch("{% url 'AddToCartPage' %}", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'X-CSRFToken': csrfToken
+                    },
+                    body: `food_id=${foodId}`
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Network response was not OK");
+                        }
+                        return response.text();
+                    })
+                    .then(() => {
+                        Swal.fire({
+                            title: 'Item added to cart!',
+                            icon: 'success',
+                            showCancelButton: true,
+                            confirmButtonText: 'Go to Cart',
+                            cancelButtonText: 'Add more items',
+                            confirmButtonColor: '#f7ac3c', // green
+                            cancelButtonColor: '#f7ac3c',  // blue
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "{% url 'AddToCartPage' %}";
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        swal.fire({
+                            icon: 'error',
+                            title: "You cannot add items from different canteens. Please clear your cart first."
+                        })
+                    });
+            });
+        });
+
+
+        const AddReview = (e) => {
+            e.preventDefault()
+            const formdata = new FormData(e.target)
+
+            fetch("/addReview", {method: "POST", body: formdata}).then(res => res.json())
+                .then(data => {
+                    if (data.code === 2) {
+                        document.getElementById("reviewForm").reset()
+                    }
+                    Swal.fire({
+                        title: data.message,
+                        icon: "success"
+                    });
+                })
+        }
+
+        document.getElementById('reviewForm').addEventListener('submit', AddReview)
+    </script>
+
+
+{% endblock %}

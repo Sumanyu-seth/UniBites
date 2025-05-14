@@ -1,0 +1,114 @@
+{% extends 'CanteenLayout.html' %}
+{% load static %}
+
+{% block mainContent %}
+
+    <div class="page-header parallaxie">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Page Header Box Start -->
+                    <div class="page-header-box">
+                        <h1 class="text-anime-style-2" data-cursor="-opaque">{{ request.session.canteen.name }}</h1>
+                        <nav class="wow fadeInUp">
+                            <H3 class="text-anime-style-2" data-cursor="-opaque">ADD FOOD ITEMS</H3>
+                        </nav>
+                    </div>
+                    <!-- Page Header Box End -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reserve-table justify-content-center d-flex">
+        <div class="col-lg-6 ">
+            <div class="reserve-table-form ">
+                <form id="AddFoodForm" class="wow fadeInUp">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="form-group col-md-12 mb-4">
+                            <label for="name" class="form-label">Food Item</label>
+                            <input type="text" name="name" class="form-control" id="name" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="form-group col-md-6 mb-4">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea type="text" name="description" class="form-control" id="description"
+                                      required></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="form-group col-md-6 mb-4">
+                            <label for="image" class="form-label">Image:</label>
+                            <input type="file" class="form-control" name="image" id="image">
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="form-group col-md-6 mb-4">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="number" name="price" class="form-control" id="price" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="form-group col-md-6 mb-4">
+                            <label for="discount" class="form-label">Discount</label>
+                            <input type="number" class="form-control" name="discount" id="discount">
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+                        <div class="form-group col-md-6 mb-4">
+                            <label class="form-label">Category</label>
+                            <select name="category" class="form-control form-select" id="category" required>
+                                {% for cat in category %}
+                                    <option value="{{ cat.id }}">{{ cat.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+
+                        <div class="form-group col-md-6 mb-4">
+                            <label class="form-label">Canteen</label>
+                            <input type="text" class="form-control" name="canteen" id="canteen" readonly
+                                   value="{{ request.session.canteen.id }}">
+                            <div class="help-block with-errors"></div>
+                        </div>
+
+
+                        <div class="col-lg-12">
+                            <div class="reserve-table-btn">
+                                <button type="submit" class="btn-default">ADD FOOD ITEM</button>
+                                <div id="msgSubmit" class="h3 hidden"></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        const ADDfood = (e) => {
+            e.preventDefault()
+            const formdata = new FormData(e.target)
+            console.log(formdata)
+
+            fetch("/addFood", {method: "POST", body: formdata}).then(res => res.json())
+                .then(data => {
+                    if (data.code === 2) {
+                        document.getElementById("AddFoodForm").reset()
+                    }
+                    Swal.fire({
+                        title: data.message,
+                        icon: "success"
+                    });
+                })
+        }
+
+        document.getElementById('AddFoodForm').addEventListener('submit', ADDfood)
+
+    </script>
+{% endblock %}
+
+
+

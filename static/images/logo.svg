@@ -1,0 +1,8 @@
+<svg width="200" height="60" xmlns="http://www.w3.org/2000/svg">
+  <text x="53" y="40" font-family="cursive" font-size="37" font-weight="bolder" fill="#f7ac3c">UniBites</text>
+   <circle cx="25" cy="25" r="25" fill="#f7ac3c"/>
+  <text x="18" y="24" text-anchor="middle" fill="white" font-family="cursive" font-size="22" font-weight="bold" dominant-baseline="middle">U</text>
+  <text x="33" y="30" text-anchor="middle" fill="white" font-family="cursive" font-size="22" font-weight="bold" dominant-baseline="middle">B</text>
+</svg>
+
+
